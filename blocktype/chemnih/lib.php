@@ -29,7 +29,7 @@
 
 defined('INTERNAL') || die();
 
-class PluginBlocktypechemnih extends SystemBlocktype {
+class PluginBlocktypeChemNih extends SystemBlocktype {
 
     public static function get_title() {
         return get_string('title', 'blocktype.chemnih');
@@ -40,7 +40,13 @@ class PluginBlocktypechemnih extends SystemBlocktype {
     }
 
     public static function get_categories() {
-        return array('feeds');
+    	  //Check Mahara release and change menu for Mahara 1.4
+    	  require_once(get_config('libroot') . 'version.php');
+		  $release = $config->release;
+		  if ($release < 1.4) {
+            return array('feeds');
+        }
+        return array('external');
     }
 
     public static function render_instance(BlockInstance $instance, $editing=false) {
@@ -53,9 +59,8 @@ class PluginBlocktypechemnih extends SystemBlocktype {
         $height  = (!empty($configdata['height'])) ? hsc($configdata['height']) : '300';
         $display = (!empty($configdata['display'])) ? hsc($configdata['display']) : '1';
         $nih = 'http://cactus.nci.nih.gov/chemical/structure/';
-		
         if (isset($configdata['chemnihid'])) {
-            $result = '';        	
+            $result = '';
             $result .= '<div style="text-align: center; width:'.$width.'px">';
             if ($display == '1') {
             	 $result .= '<a title="'.get_string('view','blocktype.chemnih').'" target="blank" href="'.$nih.$chemnihid2.'/image?width=500&height=500&linewidth=2&symbolfontsize=16">'.$chemnihid.'</a>';

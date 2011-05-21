@@ -19,18 +19,14 @@
  *
  * @package    mahara
  * @subpackage blocktype-chemnih
- * @author     Geoffrey Rowland
+ * @author     Geoff Rowland
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL
- * @copyright  (C) 2011 Geoffrey Rowland, geoff.rowland@yeovil.ac.uk
+ * @copyright  (C) 2011 Geoff Rowland, geoff.rowland@yeovil.ac.uk
  *
- * This plugin depends on the NIH NCI/CADD Chemical Identifier Resolver
- * http://cactus.nci.nih.gov/chemical/structure
  */
 
 defined('INTERNAL') || die();
 
 $config = new StdClass;
-$config->version = 2011051700;
-$config->release = '0.0.1';
-
-?>
+$config->version = 2011052100;
+$config->release = '0.0.2';
